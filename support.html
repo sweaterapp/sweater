@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweater Support</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-top: #191d22;
+      --bg-bottom: #262d36;
+      --panel: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f5f7fa;
+      --muted: rgba(245, 247, 250, 0.72);
+      --accent: #d86a4d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      background: linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
+      color: var(--text);
+      display: grid;
+      place-items: center;
+    }
+
+    main {
+      width: min(100%, 620px);
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.05;
+    }
+
+    h2 {
+      margin: 24px 0 8px;
+      font-size: 18px;
+    }
+
+    p, li {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    ul {
+      margin: 10px 0 0 18px;
+      padding: 0;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .links {
+      margin-top: 22px;
+    }
+
+    .links a {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Sweater</p>
+    <h1>Support</h1>
+    <p>If you need help with your account, challenge activity, proof uploads, or anything else in Sweater, reach out and we’ll take a look.</p>
+
+    <a class="button" href="mailto:sweater.appins@gmail.com">Email Support</a>
+
+    <h2>Best things to include</h2>
+    <ul>
+      <li>Your account email.</li>
+      <li>A short description of the issue.</li>
+      <li>Screenshots if something looks wrong.</li>
+      <li>The approximate time the problem happened.</li>
+    </ul>
+
+    <h2>Account and data requests</h2>
+    <p>If you need help with account access, password resets, or a data/privacy request, email the same support inbox and mention the request clearly in the subject line.</p>
+
+    <div class="links">
+      <p><a href="./privacy-policy.html">View Privacy Policy</a></p>
+    </div>
+  </main>
+</body>
+</html>
