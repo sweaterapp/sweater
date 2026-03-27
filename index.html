@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweater</title>
+  <meta
+    name="description"
+    content="Sweater is a social fitness accountability app for recurring workout pacts with friends."
+  />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-top: #171b20;
+      --bg-bottom: #262d36;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f5f7fa;
+      --muted: rgba(245, 247, 250, 0.72);
+      --accent: #d86a4d;
+      --accent-soft: rgba(216, 106, 77, 0.16);
+      --shadow: rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(216, 106, 77, 0.18), transparent 30%),
+        linear-gradient(145deg, var(--bg-top), var(--bg-bottom));
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07));
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+      font-size: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 52px var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(216, 106, 77, 0.24), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(40px, 7vw, 66px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      border: 1px solid transparent;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 16px 26px rgba(216, 106, 77, 0.22);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+
+    .hero-card {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .mini-panel {
+      padding: 18px;
+      border-radius: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    .mini-label {
+      margin: 0 0 8px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .mini-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .mini-text {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 20px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(216, 106, 77, 0.22);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .section {
+      margin-top: 24px;
+      padding: 28px;
+      border-radius: 30px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 24px;
+      background: var(--panel-strong);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .feature-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 26px;
+      }
+
+      .section {
+        padding: 22px;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-mark">💧</div>
+        <span>Sweater</span>
+      </div>
+
+      <nav class="nav-links">
+        <a class="nav-link" href="./docs/support.html">Support</a>
+        <a class="nav-link" href="./docs/privacy-policy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Weekly Fitness With Friends</p>
+            <h1>Make your workout streak feel social.</h1>
+            <p>
+              Sweater helps friends create weekly accountability pacts, submit live workout proof,
+              and keep the pressure on in a way that feels simple, sharp, and real.
+            </p>
+
+            <div class="cta-row">
+              <a class="button button-primary" href="https://apps.apple.com/us/app/sweater-fitness-with-friends/id6743879966">Download on the App Store</a>
+              <a class="button button-secondary" href="./docs/support.html">Get support</a>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>Create pacts</strong>
+                <span>Set a weekly goal and lock in your accountability amount.</span>
+              </div>
+              <div class="stat">
+                <strong>Log proof</strong>
+                <span>Use SweatCam to capture a live workout photo inside the app.</span>
+              </div>
+              <div class="stat">
+                <strong>Track history</strong>
+                <span>See past matchups, scorelines, and canceled cycles in one place.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="mini-panel">
+              <p class="mini-label">How it works</p>
+              <p class="mini-title">Choose your crew. Set the goal. Show up.</p>
+              <p class="mini-text">
+                Sweater is built around recurring weekly accountability instead of one-off check-ins,
+                so your progress keeps rolling with the people who will actually notice if you disappear.
+              </p>
+            </div>
+
+            <div class="mini-panel">
+              <p class="mini-label">Built for</p>
+              <p class="mini-title">Friends who need a little pressure to stay consistent.</p>
+              <p class="mini-text">
+                Less wellness fluff, more follow-through.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What you can do in Sweater</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>Partner up</h3>
+            <p>Add friends by handle, manage requests, and build a small accountability circle that actually matters.</p>
+          </article>
+          <article class="feature">
+            <h3>Start challenges</h3>
+            <p>Create recurring pacts, choose a start date, optionally add an end date, and bring multiple partners into one challenge.</p>
+          </article>
+          <article class="feature">
+            <h3>Keep receipts</h3>
+            <p>Every challenge lives with proof history, score summaries, and a clear record of who stayed on track.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 Sweater</span>
+        <div class="footer-links">
+          <a href="./docs/privacy-policy.html">Privacy Policy</a>
+          <a href="./docs/support.html">Support</a>
+          <a href="./app-ads.txt">app-ads.txt</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
