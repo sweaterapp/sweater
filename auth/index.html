@@ -124,7 +124,7 @@
     <p id="body-copy">We’re sending you back into the app now.</p>
 
     <div class="actions">
-      <a id="open-app" class="button button-primary" href="sweater://auth-callback">Open Sweater</a>
+      <button id="open-app" class="button button-primary" type="button">Open Sweater</button>
     </div>
 
     <p id="status" class="status">If Sweater does not open automatically, tap “Open Sweater”.</p>
@@ -136,7 +136,7 @@
   <script>
     const headline = document.getElementById("headline");
     const bodyCopy = document.getElementById("body-copy");
-    const openAppLink = document.getElementById("open-app");
+    const openAppButton = document.getElementById("open-app");
     const status = document.getElementById("status");
 
     const currentURL = new URL(window.location.href);
@@ -160,12 +160,16 @@
       bodyCopy.textContent = "Your email is confirmed. Return to the app to complete sign-in safely.";
     }
 
-    openAppLink.href = deepLink.toString();
+    const openApp = () => {
+      window.location.replace(deepLink.toString());
+    };
+
+    openAppButton.addEventListener("click", openApp);
 
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isIOS) {
       window.setTimeout(() => {
-        window.location.replace(deepLink.toString());
+        openApp();
       }, 120);
     } else {
       status.textContent = "Open this on your iPhone with Sweater installed, then tap “Open Sweater”.";
